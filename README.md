@@ -80,6 +80,68 @@ Total number of curves: 3
 Number of circles: 1
 Sum of circle radii: 6.230000
 ```
+### Example input curves_to_check
+```text
+9
+C 111000111 "wheel_flange" 0.000000 0.000000 0.000000 1.000000
+E 222000111 "access_hatch" 0.000000 0.000000 0.000000 2.000000 3.000000
+H 333000111 "screw_thread" 0.000000 0.000000 0.000000 2.000000 6.283185
+C 444000111 "pitch_sign" -10.000000 -20.000000 30.128000 5.000000
+E 555000111 "cover_plate" -2.000000 5.000000 -10.896000 1.000000 4.000000
+H 666000111 "nut_thread" 4.500000 -2.800000 10.000000 3.000000 4.000000
+C 777000111 "centering_boss" 3.000000 4.000000 -2.000000 -2.000000
+E 888000111 "cam_profile" 1.000000 -2.500000 5.000000 -10.000000 2.350000
+H 999000111 "bolt_thread" 1.200000 5.600000 -7.000000 -4.550000 2.200000
+
+```
+### Example output for curves_to_check
+```text
+Warning: Skipping line 8 - Circle radius must be positive
+Warning: Skipping line 9 - Ellipse radii must be positive
+Warning: Skipping line 10 - Helix radius must be positive
+Warning: Expected 9 curves, but parsed 6
+=== Parsed 6 curves ===
+
+=== All curves at t = PI/4 (0.785398) ===
+ID: 111000111, Name: wheel_flange
+Point: (0.707107, 0.707107, 0.000000)
+Derivative: (-0.707107, 0.707107, 0.000000)
+------------------------
+ID: 222000111, Name: access_hatch
+Point: (1.414214, 2.121320, 0.000000)
+Derivative: (-1.414214, 2.121320, 0.000000)
+------------------------
+ID: 333000111, Name: screw_thread
+Point: (1.414214, 1.414214, 0.785398)
+Derivative: (-1.414214, 1.414214, 1.000000)
+------------------------
+ID: 444000111, Name: pitch_sign
+Point: (-6.464466, -16.464466, 30.128000)
+Derivative: (-3.535534, 3.535534, 0.000000)
+------------------------
+ID: 555000111, Name: cover_plate
+Point: (-1.292893, 7.828427, -10.896000)
+Derivative: (-0.707107, 2.828427, 0.000000)
+------------------------
+ID: 666000111, Name: nut_thread
+Point: (6.621320, -0.678680, 10.500000)
+Derivative: (-2.121320, 2.121320, 0.636620)
+------------------------
+
+=== Found 2 circles ===
+
+=== Sorted circles (by radius) ===
+Circle ID: 111000111, Name: wheel_flange, Radius: 1.000000
+Circle ID: 444000111, Name: pitch_sign, Radius: 5.000000
+
+=== Statistics ===
+Total number of curves: 6
+Number of circles: 2
+Sum of circle radii: 6.000000
+```
+### Note on Warning Messages
+The warnings shown in the output example (e.g., "Circle radius must be positive") demonstrate the program's error handling capabilities. Invalid curves are skipped with appropriate warning messages, while valid curves continue to be processed normally.
+
 ### The program will output:
 - For each curve (at t = π/4):
 - ID and name
